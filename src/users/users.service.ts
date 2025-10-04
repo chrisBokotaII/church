@@ -31,7 +31,12 @@ export class UsersService {
   }
 
   async findAll(): Promise<ResponseUserDto> {
-    const users = await this.userRepository.find();
+    const users = await this.userRepository.find({
+      relations: {
+        sermons: true,
+        galleryItems: true,
+      },
+    });
 
     users.forEach((user) => {
       delete user.password;
@@ -45,7 +50,13 @@ export class UsersService {
   }
 
   async findOne(id: string): Promise<ResponseUserDto> {
-    const user = await this.userRepository.findOne({ where: { id } });
+    const user = await this.userRepository.findOne({
+      where: { id },
+      relations: {
+        sermons: true,
+        galleryItems: true,
+      },
+    });
     if (!user) throw new HttpException('User not found', 404);
     const { password, ...result } = user;
     return {

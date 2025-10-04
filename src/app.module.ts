@@ -3,6 +3,11 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { PastorsModule } from './pastors/pastors.module';
+import { SermonsModule } from './sermons/sermons.module';
+import { EventsModule } from './events/events.module';
+import { GalleryModule } from './gallery/gallery.module';
+import { PrayersModule } from './prayers/prayers.module';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -25,6 +30,11 @@ dotenv.config();
     }),
     UsersModule,
     AuthModule,
+    PastorsModule,
+    SermonsModule,
+    EventsModule,
+    GalleryModule,
+    PrayersModule,
   ],
   controllers: [],
   providers: [],
